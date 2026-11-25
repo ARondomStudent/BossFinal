@@ -30,10 +30,48 @@
     BONUS :
         - Inspirez-vous de votre combat du cours de Logique & Algorithmes pour aller plus loin dans cet exercice
  */
+
 class Program
 {
     static void Main(string[] args)
     {
+        int bossHealth = 150;
+        int weaponPower = 40;
         
+        int damage = CalculateWeaponDamage(weaponPower);
+        while (bossHealth > 0)
+        {
+            bossHealth = CalculateRemainingHealth(bossHealth, damage);
+                 
+            DisplayBossStatus(bossHealth);
+            damage = CalculateWeaponDamage(weaponPower);
+            
+            bossHealth = CalculateRemainingHealth(bossHealth, damage);
+                 
+            DisplayBossStatus(bossHealth);   
+        }
+        
+    }
+    
+    static int CalculateWeaponDamage(int weaponPower)
+    {
+        return weaponPower;
+    }
+    
+    static int CalculateRemainingHealth(int currentHealth, int damageDealt)
+    {
+        return currentHealth - damageDealt;
+    }
+    
+    static void DisplayBossStatus(int bossHealth)
+    {
+        if (bossHealth > 0)
+        {
+            Console.WriteLine("Le boss est toujours vivant ! (" +  bossHealth + " PV restants)");
+        }
+        else
+        {
+            Console.WriteLine("Félicitations ! Le boss est vaincu !");
+        }
     }
 }
